@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+{% endblock %}
+
+{% block main %}
+<div class="p-5 mb-4 bg-light rounded-3 border">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">SafeWay</h1>
+    <p>Enter Your Location</p>
+
+    <form action="/live_data" method="post">
+      <input type="text" name="Enter Address">
+      <input type="submit">
+    </form>
+
+    <form action="/donations" method="post">
+      <input type="submit" value="SUBMIT DONATIONS">
+    </form>
+
+    <form action="/unsafe" method="post">
+      <input type="submit" value="SUBMIT UNSAFE INCIDENT">
+    </form>
+
+    <form action="/donationmap" >
+      <input type="submit" value="VIEW DONATIONS MAP">
+    </form>
+
+  </div>
+</div>
+<p align="center">
+<iframe class="map", src="/map" width="900" height="600"></iframe></p>
+<h3><b style="background-color: lightcoral; color: lightcyan;">
+    The Heatmap Shows Past Crime Data from 2018-2021
+</b></h3>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/app.min.js') }}" charset="utf-8"></script>
+{% endblock %}

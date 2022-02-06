@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+{% endblock %}
+
+{% block main %}
+<div class="p-5 mb-4 bg-light rounded-3 border">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">LIVE DONATIONS DATA</h1>
+    
+    <a href="/"><input type="button" value="Back to Home Screen"></a> 
+
+    <table id="data" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in data %}
+        <tr>
+          <td>{{ user[3] }}</td>
+          <td>{{ user[4] }}</td>
+          <td>{{ user[5] }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+
+    
+  </div>
+</div>
+<p align="center">
+<iframe class="map", src="/map" width="900" height="600"></iframe></p>
+<h4><b style="background-color: lightcoral; color: lightcyan;">
+    Green Points Represents Latest Donations , click on those points to view data
+</b></h4>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/app.min.js') }}" charset="utf-8"></script>
+{% endblock %}
